@@ -102,5 +102,74 @@ public class MemberDao {
     
     }
     
-	
+    // 3. 한명의 회원정보 조회 DAO
+    public MemberDto getOneMemberInfo(String id) {
+    	
+    	MemberDto memberDto = new MemberDto();
+    	
+    	try {
+			
+    		conn = getConnection();
+    		pstmt = conn.prepareStatement("SELECT * FROM MEMBER WHERE ID = ?");
+    		pstmt.setString(1, id);
+    		rs = pstmt.executeQuery();
+    		
+    		if (rs.next()) {
+    			memberDto.setId(rs.getString("ID"));
+    			memberDto.setPw(rs.getString("PW"));
+    			memberDto.setName(rs.getString("NAME"));
+    			memberDto.setTel(rs.getString("TEL"));
+    			memberDto.setEmail(rs.getString("EMAIL"));
+    			memberDto.setField(rs.getString("FIELD"));
+    			memberDto.setSkill(rs.getString("SKILL"));
+    			memberDto.setMajor(rs.getString("MAJOR"));
+    		}
+    		
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (rs != null)    {try {rs.close();}    catch (SQLException e) {}}
+        	if (pstmt != null) {try {pstmt.close();} catch (SQLException e) {}}
+            if (conn != null)  {try {conn.close();}  catch (SQLException e) {}}
+		}
+    	
+    	return memberDto;
+    	
+    }
+    
+    // 4. 입사지원 DAO
+    
+    public void apply(MemberDto memberDto) {
+    	
+    	
+    	try {
+			
+    		conn = getConnection();
+    		pstmt = conn.prepareStatement("UPDATE MEMBER SET FIELD = ? , SKILL = ? , MAJOR = ? WHERE ID = ?");
+    		
+    		pstmt.setString(1, memberDto.getField());
+    		pstmt.setString(2, memberDto.getSkill());
+    		pstmt.setString(3, memberDto.getMajor());
+    		pstmt.setString(4, memberDto.getId());
+    		pstmt.executeUpdate();
+    		
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (pstmt != null) {try {pstmt.close();} catch (SQLException e) {}}
+            if (conn != null)  {try {conn.close();}  catch (SQLException e) {}}
+		}
+    	
+    	
+    	
+    	
+    	
+    }
+    
+    
 }
+
+
+
+
+

@@ -43,7 +43,7 @@
 		<c:if test="${id ne null }">
 			${id }님 환영합니다.<br><br>
 			<p>입사지원정보 수정</p>
-			<p>로그아웃</p>
+			<p> <a href="logout">로그아웃</a></p>
 			<p>회원탈퇴</p>
 		</c:if>
 		
@@ -56,7 +56,7 @@
 	<hr><br>
 		
 	<div align="center">
-		<img src="img/applyonline.png" alt="입사지원하기"> <%--servlet 기준이라 WebContent 밑부터 쓰면됨 --%>
+		<a href="apply"><img src="img/applyonline.png" alt="입사지원하기"></a> <%--servlet 기준이라 WebContent 밑부터 쓰면됨 --%>
 	</div>
 		
 
