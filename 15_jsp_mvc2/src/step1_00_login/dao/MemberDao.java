@@ -137,16 +137,14 @@ public class MemberDao {
     	
     }
     
-    // 4. 입사지원 DAO
     
+    // 4. 입사지원 DAO
     public void apply(MemberDto memberDto) {
-    	
     	
     	try {
 			
     		conn = getConnection();
-    		pstmt = conn.prepareStatement("UPDATE MEMBER SET FIELD = ? , SKILL = ? , MAJOR = ? WHERE ID = ?");
-    		
+    		pstmt = conn.prepareStatement("UPDATE MEMBER SET FIELD = ? , SKILL = ? , MAJOR = ?  WHERE ID = ?");
     		pstmt.setString(1, memberDto.getField());
     		pstmt.setString(2, memberDto.getSkill());
     		pstmt.setString(3, memberDto.getMajor());
@@ -160,11 +158,8 @@ public class MemberDao {
             if (conn != null)  {try {conn.close();}  catch (SQLException e) {}}
 		}
     	
-    	
-    	
-    	
-    	
     }
+    
     
     
 }

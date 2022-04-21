@@ -12,18 +12,16 @@ import javax.servlet.http.HttpServletResponse;
 import step1_00_login.dao.MemberDao;
 import step1_00_login.dto.MemberDto;
 
-
 @WebServlet("/join")
 public class Join extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
        
-    
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher dis = request.getRequestDispatcher("step1_01_loginEx/02_join.jsp");
 		dis.forward(request, response);
 	}
-	
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		request.setCharacterEncoding("utf-8");
@@ -36,12 +34,16 @@ public class Join extends HttpServlet {
 		memberDto.setEmail(request.getParameter("email"));
 		
 		boolean isJoin = MemberDao.getInstance().joinMember(memberDto);
+		
 		request.setAttribute("isJoin", isJoin);
 		
 		RequestDispatcher dis = request.getRequestDispatcher("step1_01_loginEx/03_joinAction.jsp");
 		dis.forward(request, response);
-		
-		
+	
 	}
 
 }
+
+
+
+

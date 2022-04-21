@@ -1,15 +1,15 @@
 package step1_00_login.dto;
 
 public class MemberDto {
-	
+
 	private String id;
 	private String pw;
 	private String name;
 	private String tel;
 	private String email;
-	private String field;
-	private String skill;
-	private String major;
+	private String field; // 지원분야
+	private String skill; // 기술 능력
+	private String major; // 전공 분야
 	
 	public String getId() {
 		return id;
@@ -59,10 +59,5 @@ public class MemberDto {
 	public void setMajor(String major) {
 		this.major = major;
 	}
-	
-	
-	
-	
-	
 	
 }
